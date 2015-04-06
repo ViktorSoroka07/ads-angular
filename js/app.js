@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     /*global angular*/
-    var app = angular.module('Ads', ['product-module', 'ngTagsInput']);
+    var app = angular.module('Ads', ['ngTagsInput']);
     app.controller('AdsController', ['$http', '$scope', function ($http, $scope) {
         var self = this;
         self.newAd = {};
@@ -15,7 +15,6 @@
                 }
             );
         }
-
         self.loadTags = function() {
             return $http.get('./js/tags.json');
         };
@@ -41,9 +40,10 @@
             restrict: 'E',
             templateUrl: './js/directives/switcher-view.html',
             controller: function () {
-                this.view = '12';
+                this.view = JSON.parse(localStorage.getItem('ads-view')) || 12;
                 this.setView = function (str) {
                     this.view = str === 'block' ? 12 : 4;
+                    localStorage.setItem('ads-view', JSON.stringify(this.view));
                 };
             },
             controllerAs: 'switcherViewCtrl'
@@ -54,6 +54,13 @@
         return {
             restrict: 'E',
             templateUrl: './js/directives/ad-tags.html'
+        };
+    });
+
+    app.directive('singleAd', function () {
+        return {
+            restrict: 'E',
+            templateUrl: './js/directives/single-ad.html'
         };
     });
 })();

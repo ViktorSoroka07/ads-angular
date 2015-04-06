@@ -1,6 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Pacifico);
 body {
     background-color: #CDE;
+    margin-bottom: 20px;
 }
 
 header {
@@ -36,10 +37,6 @@ header h1 {
     margin-top: 0;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 24px;
-}
-
-.ad-wrap {
-    min-height: 250px;
 }
 
 .gallery {
@@ -116,8 +113,15 @@ cite {
     margin-bottom: 5px;
 }
 
-.t-cell > div {
-    display:table-cell;
-    float:none;
-    vertical-align: top;
+.row.container-height {
+    overflow: hidden;
+}
+
+.row.container-height > [class*="col-"]{
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}
+
+.tags-list{
+    text-align: right;
 }
