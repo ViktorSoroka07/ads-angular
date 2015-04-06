@@ -1,7 +1,11 @@
 <switcher-view></switcher-view>
-<div ng-class="switcherViewCtrl.view" class="ad-wrap" ng-repeat="ad in ads.ads track by $index">
-    <h3>{{ad.title}}</h3>
-    <p>{{ad.body}}</p>
-    <cite class="clearfix">—{{ad.author}} on {{ad.createdOn | date}}</cite>
-    <ad-tags></ad-tags>
+<div class="row" ng-class="{'t-cell': switcherViewCtrl.view === 4}" ng-repeat="(key, ad) in ads.ads track by $index"
+ng-if="($index + 1)%3 === 1">
+<div ng-show="ads.ads[n].title" class="ad-wrap col-sm-{{switcherViewCtrl.view}} col-md-{{switcherViewCtrl.view}}"
+      ng-repeat="n in [key, key+1, key+2]">
+        <h3>{{ads.ads[n].title}}</h3>
+        <p>{{ads.ads[n].body}}</p>
+        <cite class="clearfix">—{{ads.ads[n].author}} on {{ad.createdOn | date}}</cite>
+        <ad-tags></ad-tags>
+    </div>
 </div>

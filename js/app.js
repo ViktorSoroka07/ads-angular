@@ -41,9 +41,9 @@
             restrict: 'E',
             templateUrl: './js/directives/switcher-view.html',
             controller: function () {
-                this.view = 'col-md-12';
+                this.view = '12';
                 this.setView = function (str) {
-                    this.view = str === 'block' ? 'col-md-12' : 'col-md-4';
+                    this.view = str === 'block' ? 12 : 4;
                 };
             },
             controllerAs: 'switcherViewCtrl'

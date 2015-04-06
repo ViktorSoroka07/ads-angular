@@ -1,12 +1,12 @@
 [
-  {"text": "Tag1"},
-  {"text": "Tag2"},
-  {"text": "Tag3"},
-  {"text": "Tag4"},
-  {"text": "Tag5"},
-  {"text": "Tag6"},
-  {"text": "Tag7"},
-  {"text": "Tag8"},
-  {"text": "Tag9"},
-  {"text": "Tag10"}
+  {"text": "Cars"},
+  {"text": "Real estate"},
+  {"text": "Furniture"},
+  {"text": "Audio and video"},
+  {"text": "White goods"},
+  {"text": "Building materials"},
+  {"text": "Clothing, shoes"},
+  {"text": "Services"},
+  {"text": "The Animals"},
+  {"text": "Others"}
 ]

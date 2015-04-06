@@ -113,4 +113,11 @@ cite {
     background: #cccccc;
     color: #fff;
     margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.t-cell > div {
+    display:table-cell;
+    float:none;
+    vertical-align: top;
 }

@@ -1,23 +1,23 @@
 [
   {
     "title": "Post1",
-    "body": "I love this gem!",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium corporis earum eius optio quos! Accusamus, aut earum enim eum fuga illum ipsam laborum modi neque porro qui quia repellendus unde veniam veritatis? Consequuntur delectus facilis perferendis? Aperiam corporis distinctio eos exercitationem in non quas repudiandae, sequi totam! Aperiam cupiditate deleniti ducimus eius, esse explicabo id laborum non obcaecatisimilique sint suscipit vitae. Accusantium",
     "author": "joe@example.org",
     "createdOn": 1397490980837,
-    "tags": ["some1", "some2"]
+    "tags": ["Cars", "Real estate"]
   },
   {
     "title": "Post2",
-    "body": "I think this gem was just OK, could honestly use more shine, IMO.",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium corporis earum eius optio quos! Accusamus, aut earum enim eum fuga illum ipsam laborum modi neque porro qui quia repellendus unde veniam veritatis? Consequuntur delectus facilis perferendis? Aperiam corporis distinctio eos exercitationem in non quas repudiandae, sequi totam! Aperiam cupiditate deleniti ducimus eius, esse explicabo id laborum non obcaecati similique sint suscipit vitae. Accusantium asperiores at autem beatae delectus dolores eaque fugit id libero nihil nobis nulla omnis pariatur perspiciatis repellendus sunt tempore velit vero voluptate, voluptates. Ad autem, blanditiis ea earum, explicabo facere magni, placeat quasi qui quisquam repellendus voluptatum!",
     "author": "JimmyDean@example.org",
     "createdOn": 1397490980837,
-    "tags": ["some1", "some2"]
+    "tags": ["Furniture", "Audio and video"]
   },
   {
     "title": "Post3",
-    "body": "This gem is WAY too expensive for its rarity value.",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium corporis earum eius optio quos! Accusamus, aut earum enim eum fuga illum ipsam laborum modi neque porro qui quia repellendus unde veniam veritatis? Consequuntur delectus facilis perferendis? Aperiam corporis distinctio eos exercitationem in non quas repudiandae, sequi totam! Aperiam cupiditate deleniti ducimus eius, esse explicabo id laborum non obcaecati similique sint suscipit vitae. Accusantium asperiores at autem beatae delectus dolores eaque fugit id libero nihil nobis nulla omnis pariatur perspiciatis repellendus sunt tempore velit vero voluptate, voluptates. Ad autem, blanditiis ea earum, explicabo facere magni, placeat quasi qui quisquam repellendus voluptatum!",
     "author": "turtleguyy@example.org",
     "createdOn": 1397490980837,
-    "tags": ["some1", "some2"]
+    "tags": ["White goods", "Building materials"]
   }
 ]
