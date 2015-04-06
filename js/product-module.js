@@ -14,7 +14,7 @@
     app.directive('productReviews', function () {
         return {
             restrict: 'E',
-            templateUrl: './js/directives/product-reviews.html'
+            templateUrl: './js/directives/single-ad.html'
             //controller: function () {
             //    this.review = {};
             //    this.addReview = function () {

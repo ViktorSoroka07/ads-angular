@@ -1,0 +1,7 @@
+<switcher-view></switcher-view>
+<div ng-class="switcherViewCtrl.view" class="ad-wrap" ng-repeat="ad in ads.ads track by $index">
+    <h3>{{ad.title}}</h3>
+    <p>{{ad.body}}</p>
+    <cite class="clearfix">—{{ad.author}} on {{ad.createdOn | date}}</cite>
+    <ad-tags></ad-tags>
+</div>

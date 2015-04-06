@@ -1,15 +1,15 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-10">
-            <strong>Change view:</strong>
+            <span class="preview-title">Change view:</span>
         </div>
         <div class="col-md-2">
             <div class="btn-group pull-right" id="switch-view">
-                <button class="btn btn-primary">
-                    <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+                <button ng-click="switcherViewCtrl.setView('block')" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
                 </button>
-                <button class="btn btn-primary active">
-                    <span class="glyphicon glyphicon-th-list"></span>
+                <button ng-click="switcherViewCtrl.setView('inline')" class="btn btn-primary active">
+                    <span class="glyphicon glyphicon-th"></span>
                 </button>
             </div>
         </div>

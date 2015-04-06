@@ -6,6 +6,7 @@ body {
 header {
     width: 100%;
     background: #269abc;
+    margin-bottom: 20px;
 }
 
 header h1 {
@@ -20,11 +21,25 @@ header h1 {
     margin: 20px auto 50px auto;
 }
 
-.list-group-item {
-    border: 1px solid #eee;
+.ad-wrap, .preview {
     padding: 20px 35px;
     border-radius: 10px;
-    margin: 10px auto;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 10px solid #CCDDEE;
+    height: 100%;
+    background: #fff;
+}
+
+.preview-title {
+    margin-top: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 24px;
+}
+
+.ad-wrap {
+    min-height: 250px;
 }
 
 .gallery {
@@ -84,4 +99,18 @@ select {
 
 .ng-valid.ng-dirty {
     border-color: green;
+}
+
+cite {
+    display: block;
+    font-style: normal;
+    margin-bottom: 12px;
+}
+
+.ad-tag {
+    display: inline-block;
+    padding: 5px 10px;
+    background: #cccccc;
+    color: #fff;
+    margin-right: 5px;
 }
