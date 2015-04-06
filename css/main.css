@@ -1,0 +1,87 @@
+@import url(http://fonts.googleapis.com/css?family=Pacifico);
+body {
+    background-color: #CDE;
+}
+
+header {
+    width: 100%;
+    background: #269abc;
+}
+
+header h1 {
+    text-align: center;
+    padding: 50px;
+    font-size: 62px;
+    font-family: "Pacifico", arial, sans-serif;
+    text-shadow: 0 2px 2px #3c77b3;
+}
+
+.list-group {
+    margin: 20px auto 50px auto;
+}
+
+.list-group-item {
+    border: 1px solid #eee;
+    padding: 20px 35px;
+    border-radius: 10px;
+    margin: 10px auto;
+}
+
+.gallery {
+    padding: 5px;
+}
+
+.img-wrap{
+    text-align: center;
+}
+
+.img-thumbnails{
+    display: table;
+    margin: 0 auto;
+}
+
+.small-image {
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+    margin: 20px 15px 20px 0;
+}
+
+.small-image:last-child {
+    margin-right: 0;
+}
+
+.small-image:hover {
+    cursor: pointer;
+}
+
+#ad-form .nav-pills>li.active>a,
+#ad-form .nav-pills>li.active>a:hover,
+#ad-form .nav-pills>li.active>a:focus,
+#ad-form .btn-primary,
+#ad-form .btn-primary:hover,
+#ad-form .btn-primary:focus {
+    background: #ac005f;
+    padding: 10px 15px;
+}
+
+.review-area {
+    margin-left: 6px;
+}
+
+textarea,
+input {
+    width: 100%;
+}
+
+select {
+    width: 100%;
+}
+
+.ng-invalid.ng-dirty {
+     border-color: red;
+ }
+
+.ng-valid.ng-dirty {
+    border-color: green;
+}

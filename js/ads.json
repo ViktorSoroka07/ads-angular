@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Post1",
+    "body": "I love this gem!",
+    "author": "joe@example.org",
+    "createdOn": 1397490980837
+  },
+  {
+    "title": "Post2",
+    "body": "I think this gem was just OK, could honestly use more shine, IMO.",
+    "author": "JimmyDean@example.org",
+    "createdOn": 1397490980837
+  },
+  {
+    "title": "Post3",
+    "body": "This gem is WAY too expensive for its rarity value.",
+    "author": "turtleguyy@example.org",
+    "createdOn": 1397490980837
+  }
+]
