@@ -2,43 +2,31 @@
     'use strict';
     /*global angular*/
     var app = angular.module('Ads', ['ngTagsInput'])
-        .controller('AdsController', ['addsModel', 'storageService', '$http', function (addsModel, storageService, $http) {
+        .controller('AdsController', ['addsModel', 'tagsModel', function (addsModel, tagsModel) {
             var self = this;
             self.newAd = {};
-            self.tags = [];
-            addsModel.setAds(storageService.getData('ads'));
-            self.ads = function() {
-                return addsModel.getAds();
-            };
-            if (!self.ads()) {
-                $http.get('./js/ads.json').success(
-                    function (data) {
-                        addsModel.setAds(data);
-                        storageService.setData('ads', self.ads());
-                    }
-                );
+            self.loadTags = tagsModel.loadTags;
+            Object.defineProperty(self, 'ads', {
+                get: function () {
+                    return addsModel.getAds();
+                }
+            });
+            Object.defineProperty(self, 'tags', {
+                get: function () {
+                    return tagsModel.getTags();
+                }
+            });
+            if (self.ads === null) {
+                addsModel.fetchAds();
             }
-
-            self.loadTags = function () {
-                return $http.get('./js/tags.json');
-            };
-
-            self.refactorTags = function (arr) {
-                return arr.map(function (item) {
-                    return item.text;
-                });
-            };
-
             self.addAdvertisement = function (ad) {
                 self.newAd.createdOn = Date.now();
-                self.newAd.tags = self.refactorTags(self.tags);
+                self.newAd.tags = tagsModel.refactorTags(self.tags);
                 addsModel.addAds(self.newAd);
                 self.newAd = {};
-                self.tags = [];
-                storageService.setData('ads', self.ads());
+                tagsModel.removeTags();
             };
         }])
-
         .directive('switcherView', ['storageService', function (storageService) {
             return {
                 restrict: 'E',
@@ -53,14 +41,12 @@
                 controllerAs: 'switcherViewCtrl'
             };
         }])
-
         .directive('adTags', function () {
             return {
                 restrict: 'E',
                 templateUrl: './js/directives/ad-tags.html'
             };
         })
-
         .directive('singleAd', function () {
             return {
                 restrict: 'E',
