@@ -1,10 +1,25 @@
 (function () {
     'use strict';
     /*global angular*/
-    var app = angular.module('Ads', ['ngTagsInput'])
+    var app = angular.module('Ads', ['ngTagsInput', 'ui.router'])
+        .config(function ($stateProvider, $urlRouterProvider) {
+            $urlRouterProvider.otherwise("/home");
+            $stateProvider
+                .state('home', {
+                    url: "/home",
+                    templateUrl: "./templates/home.html",
+                    controller: 'AdsController'
+                })
+                .state('form-ad', {
+                    url: "/form-ad",
+                    templateUrl: "./templates/ad-form.html",
+                    controller: 'AdsController'
+                })
+        })
         .controller('AdsController', ['addsModel', 'tagsModel', function (addsModel, tagsModel) {
             var self = this;
             self.newAd = {};
+            self.active = 1;
             self.loadTags = tagsModel.loadTags;
             Object.defineProperty(self, 'ads', {
                 get: function () {

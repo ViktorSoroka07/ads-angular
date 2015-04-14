@@ -17,6 +17,17 @@ header h1 {
     font-family: "Pacifico", arial, sans-serif;
     text-shadow: 0 2px 2px #3c77b3;
 }
+.nav a {
+    background: #7C3737;
+}
+
+.nav.nav-pills li.active a {
+    background: rgb(255, 136, 136);
+}
+
+.nav li a{
+    color: #fff;
+}
 
 .list-group {
     margin: 20px auto 50px auto;

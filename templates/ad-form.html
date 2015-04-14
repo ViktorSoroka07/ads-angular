@@ -1,0 +1,34 @@
+<h3>Preview block</h3>
+<div class="row preview">
+    <div class="col-md-12">
+        <h3>{{ads.newAd.title}}</h3>
+        <p>{{ads.newAd.body}}</p>
+        <cite class="clearfix">—{{ads.newAd.author}} on {{ads.newAd.createdOn | date}}</cite>
+    </div>
+</div>
+<!--ad Form -->
+<div class="row">
+    <form id="ad-form" name="AdvertisementForm" class="col-md-12"
+          ng-submit="AdvertisementForm.$valid && ads.tags.length && ads.addAdvertisement()" novalidate>
+        <!--  Review Form -->
+        <h4>Submit an ad</h4>
+        <fieldset class="form-group">
+            <input type="text" class="form-control ng-pristine" ng-model="ads.newAd.title" placeholder="Write a title for your ad" title="title" required/>
+        </fieldset>
+        <fieldset class="form-group">
+            <textarea class="form-control ng-pristine" ng-model="ads.newAd.body" placeholder="Write your ad..."
+                      title="Ad" required></textarea>
+        </fieldset>
+        <fieldset class="form-group">
+            <input type="email" class="form-control ng-pristine" ng-model="ads.newAd.author" placeholder="jimmyDean@example.org" title="Email" required/>
+        </fieldset>
+        <fieldset class="form-group">
+            <tags-input ng-model="ads.tags" add-from-autocomplete-only="true">
+                <auto-complete min-length="0" debounce-delay="0" max-results-to-show="10" source="ads.loadTags($query)"></auto-complete>
+            </tags-input>
+        </fieldset>
+        <fieldset class="form-group">
+            <input type="submit" class="btn btn-primary pull-right" value="Submit Ad"/>
+        </fieldset>
+    </form>
+</div>
