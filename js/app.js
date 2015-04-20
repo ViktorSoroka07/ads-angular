@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     /*global angular*/
-    var app = angular.module('Ads', ['ngTagsInput', 'ui.router'])
+    var app = angular.module('Ads', ['ngTagsInput', 'ui.router', 'angularRandomString'])
         .config(function ($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise("/ads");
             $stateProvider
@@ -19,11 +19,13 @@
                     templateUrl: './templates/ad-form.html'
                 })
         })
-        .controller('AdsController', ['addsModel', 'tagsModel', function (addsModel, tagsModel) {
-            var self = this;
+        .controller('AdsController', ['addsModel', 'tagsModel', 'randomString', function (addsModel, tagsModel, randomString) {
+            var self = this,
+                currentIndex;
             self.newAd = {};
             self.active = 1;
             self.loadTags = tagsModel.loadTags;
+            self.removeAd = addsModel.removeAd;
             Object.defineProperty(self, 'adsCollection', {
                 get: function () {
                     return addsModel.getAds();
@@ -42,24 +44,28 @@
             if (self.adsCollection === null) {
                 addsModel.fetchAds();
             }
+            self.clearForm = function () {
+                self.newAd = {};
+                tagsModel.removeTags();
+            };
             self.editAdvertisement = function (id) {
-                for (var i in self.adsCollection) {
-                    if (self.adsCollection.hasOwnProperty(i)) {
-                        if (self.adsCollection[i].id === id) {
-                            self.newAd = angular.copy(self.adsCollection[i]);
-                            tagsModel.setTags(tagsModel.refactorTagsObject(self.newAd.tags));
-                        }
+                self.adsCollection.some(function (item, index) {
+                    if (item._id === id) {
+                        currentIndex = index;
+                        self.newAd = angular.copy(item);
+                        tagsModel.setTags(tagsModel.refactorTagsObject(self.newAd.tags));
+                        return true;
                     }
-                }
+                });
             };
             self.addAdvertisement = function (ad) {
                 var addMethod = self.newAd.createdOn ? addsModel.updateAd : addsModel.addAds;
                 self.newAd.createdOn = self.newAd.createdOn || Date.now();
-                self.newAd.id = self.newAd.id || self.adsCount + 1;
+                self.newAd._id = self.newAd.id || randomString();
                 self.newAd.tags = tagsModel.refactorTagsArray(self.tagsCollection);
-                addMethod(self.newAd);
-                self.newAd = {};
-                tagsModel.removeTags();
+                addMethod(self.newAd, currentIndex);
+                console.log(self.adsCollection);
+                self.clearForm();
             };
         }])
         .directive('switcherView', ['storageService', function (storageService) {

@@ -128,9 +128,20 @@ cite {
     overflow: hidden;
 }
 
-.edit-ad{
+.edit-ad, .delete-ad{
     max-width: 20%;
+    width: 30px;
+    height: 30px;
+    background: rgb(171, 219, 231);
     float: right;
+    font-size: 20px;
+    -moz-border-radius: 6px; /* Firefox */
+    -webkit-border-radius: 6px; /* Safari, Chrome */
+    border-radius: 6px; /* CSS3 */
+    line-height: 35px;
+    margin: 0 3px;
+    text-align: center;
+    color: #237AB0;
 }
 
 .add-title {
