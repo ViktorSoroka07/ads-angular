@@ -1,23 +1,29 @@
 (function () {
     angular.module('Ads').service('addsModel', ['storageService', '$http', function (storageService, $http) {
         var self = this,
-            ads = storageService.getData('ads');
+            adsCollection = storageService.getData('adsCollection');
         self.getAds = function () {
-            return ads;
+            return adsCollection;
+        };
+        self.getAdsCount = function () {
+            return adsCollection.length || 0;
+        };
+        self.updateAd = function (ad) {
+            adsCollection[ad.id - 1] = ad;
         };
         self.addAds = function (ad) {
-            ads.push(ad);
-            storageService.setData('ads', ads);
+            adsCollection.push(ad);
+            storageService.setData('adsCollection', adsCollection);
         };
         self.setAds = function (data) {
-            ads = data;
-            storageService.setData('ads', ads);
+            adsCollection = data;
+            storageService.setData('adsCollection', adsCollection);
         };
         self.fetchAds = function () {
             $http.get('./js/ads.json').then(
                 function (response) {
-                    ads = response.data;
-                    storageService.setData('ads', ads);
+                    adsCollection = response.data;
+                    storageService.setData('adsCollection', adsCollection);
                 },
                 function (error) {
                     console.log(error.message);

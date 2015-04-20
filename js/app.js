@@ -3,17 +3,20 @@
     /*global angular*/
     var app = angular.module('Ads', ['ngTagsInput', 'ui.router'])
         .config(function ($stateProvider, $urlRouterProvider) {
-            $urlRouterProvider.otherwise("/home");
+            $urlRouterProvider.otherwise("/ads");
             $stateProvider
-                .state('home', {
-                    url: "/home",
-                    templateUrl: "./templates/home.html",
+                .state('ads', {
+                    url: '/ads',
+                    templateUrl: './templates/ads.html'
+                })
+                .state('editAd', {
+                    url: 'ads/:item',
+                    templateUrl: './templates/ad-form.html',
                     controller: 'AdsController'
                 })
                 .state('form-ad', {
-                    url: "/form-ad",
-                    templateUrl: "./templates/ad-form.html",
-                    controller: 'AdsController'
+                    url: '/form-ad',
+                    templateUrl: './templates/ad-form.html'
                 })
         })
         .controller('AdsController', ['addsModel', 'tagsModel', function (addsModel, tagsModel) {
@@ -21,23 +24,40 @@
             self.newAd = {};
             self.active = 1;
             self.loadTags = tagsModel.loadTags;
-            Object.defineProperty(self, 'ads', {
+            Object.defineProperty(self, 'adsCollection', {
                 get: function () {
                     return addsModel.getAds();
                 }
             });
-            Object.defineProperty(self, 'tags', {
+            Object.defineProperty(self, 'adsCount', {
+                get: function () {
+                    return addsModel.getAdsCount();
+                }
+            });
+            Object.defineProperty(self, 'tagsCollection', {
                 get: function () {
                     return tagsModel.getTags();
                 }
             });
-            if (self.ads === null) {
+            if (self.adsCollection === null) {
                 addsModel.fetchAds();
             }
+            self.editAdvertisement = function (id) {
+                for (var i in self.adsCollection) {
+                    if (self.adsCollection.hasOwnProperty(i)) {
+                        if (self.adsCollection[i].id === id) {
+                            self.newAd = angular.copy(self.adsCollection[i]);
+                            tagsModel.setTags(tagsModel.refactorTagsObject(self.newAd.tags));
+                        }
+                    }
+                }
+            };
             self.addAdvertisement = function (ad) {
-                self.newAd.createdOn = Date.now();
-                self.newAd.tags = tagsModel.refactorTags(self.tags);
-                addsModel.addAds(self.newAd);
+                var addMethod = self.newAd.createdOn ? addsModel.updateAd : addsModel.addAds;
+                self.newAd.createdOn = self.newAd.createdOn || Date.now();
+                self.newAd.id = self.newAd.id || self.adsCount + 1;
+                self.newAd.tags = tagsModel.refactorTagsArray(self.tagsCollection);
+                addMethod(self.newAd);
                 self.newAd = {};
                 tagsModel.removeTags();
             };

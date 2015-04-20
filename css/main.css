@@ -124,6 +124,20 @@ cite {
     margin-bottom: 5px;
 }
 
+.wrap-helper{
+    overflow: hidden;
+}
+
+.edit-ad{
+    max-width: 20%;
+    float: right;
+}
+
+.add-title {
+    max-width: 80%;
+    float: left;
+}
+
 .row.container-height {
     overflow: hidden;
 }

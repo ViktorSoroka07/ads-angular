@@ -1,19 +1,27 @@
 (function () {
-    angular.module('Ads').service('tagsModel', ['$http' ,function ($http) {
+    angular.module('Ads').service('tagsModel', ['$http', function ($http) {
         var self = this,
-            tags = [];
+            tagsCollection = [];
         self.getTags = function () {
-            return tags;
+            return tagsCollection;
+        };
+        self.setTags = function (tags) {
+            tagsCollection = tags;
         };
         self.removeTags = function () {
-            tags.length = 0;
+            tagsCollection.length = 0;
         };
         self.loadTags = function () {
             return $http.get('./js/tags.json');
         };
-        self.refactorTags = function (arr) {
+        self.refactorTagsArray = function (arr) {
             return arr.map(function (item) {
                 return item.text;
+            });
+        };
+        self.refactorTagsObject = function (arr) {
+            return arr.map(function (item) {
+                return {text: item};
             });
         };
     }]);
