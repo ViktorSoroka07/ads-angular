@@ -12,9 +12,14 @@
             adsCollection[ad_index] = ad;
             storageService.setData('adsCollection', adsCollection);
         };
-        self.removeAd = function(ad_index) {
-            adsCollection.splice(ad_index, 1);
-            storageService.setData('adsCollection', adsCollection);
+        self.removeAd = function(id) {
+            adsCollection.some(function (item, index) {
+                if (item._id === id) {
+                    adsCollection.splice(index, 1);
+                    storageService.setData('adsCollection', adsCollection);
+                    return true;
+                }
+            });
         };
         self.addAds = function (ad) {
             adsCollection.push(ad);
