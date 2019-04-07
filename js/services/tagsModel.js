@@ -1,28 +1,27 @@
-(function () {
-    angular.module('Ads').service('tagsModel', ['$http', function ($http) {
-        var self = this,
-            tagsCollection = [];
-        self.getTags = function () {
-            return tagsCollection;
-        };
-        self.setTags = function (tags) {
-            tagsCollection = tags;
-        };
-        self.removeTags = function () {
-            tagsCollection.length = 0;
-        };
-        self.loadTags = function () {
-            return $http.get('./js/tags.json');
-        };
-        self.refactorTagsArray = function (arr) {
-            return arr.map(function (item) {
-                return item.text;
-            });
-        };
-        self.refactorTagsObject = function (arr) {
-            return arr.map(function (item) {
-                return {text: item};
-            });
-        };
-    }]);
-}());
+(function() {
+  angular.module('Ads').service('tagsModel', [
+    '$http',
+    function($http) {
+      let tagsCollection = [];
+
+      this.getTags = function() {
+        return tagsCollection;
+      };
+      this.setTags = function(tags) {
+        tagsCollection = tags;
+      };
+      this.removeTags = function() {
+        tagsCollection.length = 0;
+      };
+      this.loadTags = function() {
+        return $http.get('./js/tags.json');
+      };
+      this.refactorTagsArray = function(arr) {
+        return arr.map(({ text }) => text);
+      };
+      this.refactorTagsObject = function(arr) {
+        return arr.map(text => ({ text }));
+      };
+    },
+  ]);
+})();

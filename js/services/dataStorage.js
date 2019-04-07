@@ -1,11 +1,12 @@
-(function () {
-    angular.module('Ads').service('storageService', [function () {
-        var self = this;
-        self.getData = function (key) {
-            return angular.fromJson(localStorage.getItem(key));
-        };
-        self.setData = function (key, value) {
-            localStorage.setItem(key, angular.toJson(value));
-        }
-    }]);
-}());
+(function() {
+  angular.module('Ads').service('storageService', [
+    function() {
+      this.getData = function(key) {
+        return angular.fromJson(localStorage.getItem(key));
+      };
+      this.setData = function(key, value) {
+        localStorage.setItem(key, angular.toJson(value));
+      };
+    },
+  ]);
+})();

@@ -1,1 +1,63 @@
-<!doctype html><html lang="en" ng-app="Ads"><head>    <meta charset="UTF-8">    <title>Document</title>    <link rel="stylesheet" href="css/reset.css"/>    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet'>    <link rel="stylesheet" type="text/css" href="bower_components/ng-tags-input/ng-tags-input.css">    <link rel="stylesheet" href="css/main.css"/>    <script src="bower_components/angularjs/angular.min.js"></script>    <script src="bower_components/ui-router/release/angular-ui-router.min.js"></script>    <script src="bower_components/ng-tags-input/ng-tags-input.min.js"></script>    <script src="bower_components/angular-random-string/src/angular-random-string.js"></script>    <script src="js/app.js"></script>    <script src="js/services/dataStorage.js"></script>    <script src="js/services/addsModel.js"></script>    <script src="js/services/tagsModel.js"></script></head><body ng-controller="AdsController as ads"><header class="container-fluid">    <h1 class="text-center">Ads</h1>    <ul class="nav nav-pills container">        <li ng-click="ads.active = 1" ng-class="{active: ads.active === 1}">            <a ui-sref="ads">Home</a>        </li>        <li ng-click="(ads.active != 2) ? ads.clearForm() : ''"; ads.active = 2;" ng-class="{active: ads.active === 2}">            <a ui-sref="form-ad">Add advertisement</a>        </li>    </ul></header><div class="container search">    <div class="row search-labels">        <div class="col-md-4">            <label for="search-posts">Search by post name</label>        </div>        <div class="col-md-4">            <label for="search-tags">Search by tag</label>        </div>        <div class="col-md-4">            <label for="search-text">Search by ad`s text</label>        </div>    </div>    <div class="row search-inputs">        <div class="col-md-4">            <input ng-model="ads.search.title" id="search-posts" type="text" placeholder="Type some text to search"/>        </div>        <div class="col-md-4">            <input ng-model="ads.search.tags" id="search-tags" type="text" placeholder="Type some text to search"/>        </div>        <div class="col-md-4">            <input ng-model="ads.search.body" id="search-text" type="text" placeholder="Type some text to search"/>        </div>    </div></div><div class="container">    <div ui-view></div></div></body></html>
+<!doctype html>
+<html lang="en" ng-app="Ads">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/reset.css"/>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+  <link href="http://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="node_modules/ng-tags-input/build/ng-tags-input.css">
+  <link rel="stylesheet" href="css/main.css"/>
+  <script src="node_modules/angular/angular.js"></script>
+  <script src="node_modules/@uirouter/angularjs/release/angular-ui-router.js"></script>
+  <script src="node_modules/ng-tags-input/build/ng-tags-input.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services/randomString.js"></script>
+  <script src="js/app-controller.js"></script>
+  <script src="js/services/dataStorage.js"></script>
+  <script src="js/services/addsModel.js"></script>
+  <script src="js/services/tagsModel.js"></script>
+</head>
+<body ng-controller="AdsController as ads">
+  <header class="container-fluid">
+    <h1 class="text-center">Ads</h1>
+    <ul class="nav nav-pills container">
+      <li ng-click="ads.active = 1" ng-class="{active: ads.active === 1}">
+        <a ui-sref="ads">Home</a>
+      </li>
+      <li ng-click="(ads.active !== 2) ? ads.clearForm() : ''; ads.active = 2;"
+          ng-class="{active: ads.active === 2}"
+      >
+        <a ui-sref="form-ad">Add advertisement</a>
+      </li>
+    </ul>
+  </header>
+  <div class="container search">
+    <div class="row search-labels">
+      <div class="col-md-4">
+        <label for="search-posts">Search by post name</label>
+      </div>
+      <div class="col-md-4">
+        <label for="search-tags">Search by tag</label>
+      </div>
+      <div class="col-md-4">
+        <label for="search-text">Search by ad`s text</label>
+      </div>
+    </div>
+    <div class="row search-inputs">
+      <div class="col-md-4">
+        <input ng-model="ads.search.title" id="search-posts" type="text" placeholder="Type some text to search"/>
+      </div>
+      <div class="col-md-4">
+        <input ng-model="ads.search.tags" id="search-tags" type="text" placeholder="Type some text to search"/>
+      </div>
+      <div class="col-md-4">
+        <input ng-model="ads.search.body" id="search-text" type="text" placeholder="Type some text to search"/>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div ui-view></div>
+  </div>
+</body>
+</html>
